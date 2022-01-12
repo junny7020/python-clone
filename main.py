@@ -1,52 +1,37 @@
-def plus(a, b):
-    if a.isdecimal() and b.isdecimal():
-        return (float(a)+float(b))
-    else:
-        return "Please enter numbers."
+"""
+As you can see, the code is broken.
+Create the missing functions, use default arguments.
+Sometimes you have to use 'return' and sometimes you dont.
+Start by creating the functions
+"""
+def is_on_list(list, element):
+    return element in list
 
-def minus(a, b):
-    if a.isdecimal() and b.isdecimal():
-        return (float(a)-float(b))
-    else:
-        return "Please enter numbers."
 
-def div(a, b):
-    if a.isdecimal() and b.isdecimal():
-        return (float(a)/float(b))
-    else:
-        return "Please enter numbers."
+def get_x(arr, order_num):
+    return arr[order_num]
 
-def times(a, b):
-    if a.isdecimal() and b.isdecimal():
-        return (float(a)*float(b))
-    else:
-        return "Please enter numbers."
 
-def negate(a):
-    if a.isdecimal():
-        a = float(a)
-        return -a
-    else:
-        return "Please enter a number."
+def add_x(arr, element):
+    arr.append(element)
 
-def pow(a, b):
-    if a.isdecimal() and b.isdecimal():
-        return (float(a)**float(b))
-    else:
-        return "Please enter numbers."
 
-def remainder(a, b):
-    if a.isdecimal() and b.isdecimal():
-        return (float(a) % float(b))
-    else:
-        return "Please enter numbers."
+def remove_x(arr, element):
+    arr.remove(element)
 
-a = input("First number:")
-b = input("Second number:")
-print(plus(a, b))
-print(minus(a, b))
-print(div(a, b))
-print(times(a, b))
-print(negate(a))
-print(pow(a, b))
-print(remainder(a, b))
+# \/\/\/\/\/\/\  DO NOT TOUCH AREA  \/\/\/\/\/\/\ #
+
+days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+print("Is Wed on 'days' list?", is_on_list(days, "Wed"))
+
+print("The fourth item in 'days' is:", get_x(days, 3))
+
+add_x(days, "Sat")
+print(days)
+
+remove_x(days, "Mon")
+print(days)
+
+
+# /\/\/\/\/\/\/\ END DO NOT TOUCH AREA /\/\/\/\/\/\/\ #
