@@ -1,37 +1,165 @@
 """
-As you can see, the code is broken.
-Create the missing functions, use default arguments.
-Sometimes you have to use 'return' and sometimes you dont.
-Start by creating the functions
+Again, the code is broken, you need to create 4 functions.
+  - add_to_dict: Add a word to a dict.
+  - get_from_dict: Get a word from inside a dict.
+  - update_word: Update a word inside of the dict.
+  - delete_from_dict: Delete a word from the dict.
+
+All this functions should check for errors, follow the comments to see all cases you need to cover.
+
+There should be NO ERRORS from Python in the console.
 """
-def is_on_list(list, element):
-    return element in list
+
+def add_to_dict(dic = None, word = None, discript = None):
+  
+  if type(dic) is dict and word not in dic and discript is not None:
+    dic[word] = discript
+    print(f"{word} has been added.")
+  
+  elif type(dic) is dict and word in dic:
+    print(f"{word} is already on the dictionary. Won't add.")
+  
+  elif type(dic) is not dict:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
+  
+  elif discript is None:
+    print("You need to send a word and a definition.")
+
+def get_from_dict(dic = None, word = None):
+  
+  if type(dic) is dict and word in dic:
+    print(f"{word}: {dic[word]}")
+
+  elif word is None:
+    print("You need to send a word to search for.")
+
+  elif type(dic) is dict and word not in dic:
+    print(f"{word} was not found in this dict.")
+
+  elif type(dic) is not dict:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
+  
+
+def update_word(dic = None, word = None, discript = None):
+
+  if type(dic) is dict and word in dic and discript is not None:
+    dic[word] = discript
+    print(f"{word} has been updated to: {discript}")
+  
+  elif type(dic) is dict and word not in dic:
+    print(f"{word} is not on the dict. Can't update non-existing word.")
+  
+  elif type(dic) is not dict:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
+  
+  elif discript is None:
+    print("You need to send a word and a definiton to update.")
+
+def delete_from_dict(dic = None, word = None):
+
+  if type(dic) is dict and word in dic:
+    del dic[word]
+    print(f"{word} has been deleted.")
+
+  elif word is None:
+    print("You need to specify a word to delete.")
+
+  elif type(dic) is dict and word not in dic:
+    print(f"{word} is not in this dict. Won't delete.")
+
+  elif type(dic) is not dict:
+    print(f"You need to send a dictionary. You sent: {type(dic)}")
 
 
-def get_x(arr, order_num):
-    return arr[order_num]
+# \/\/\/\/\/\/\ DO NOT TOUCH  \/\/\/\/\/\/\
+
+import os
+
+os.system('clear')
 
 
-def add_x(arr, element):
-    arr.append(element)
+my_english_dict = {}
+
+print("\n###### add_to_dict ######\n")
+
+# Should not work. First argument should be a dict.
+print('add_to_dict("hello", "kimchi"):')
+add_to_dict("hello", "kimchi")
+
+# Should not work. Definition is required.
+print('\nadd_to_dict(my_english_dict, "kimchi"):')
+add_to_dict(my_english_dict, "kimchi")
+
+# Should work.
+print('\nadd_to_dict(my_english_dict, "kimchi", "The source of life."):')
+add_to_dict(my_english_dict, "kimchi", "The source of life.")
+
+# Should not work. kimchi is already on the dict
+print('\nadd_to_dict(my_english_dict, "kimchi", "My fav. food"):')
+add_to_dict(my_english_dict, "kimchi", "My fav. food")
 
 
-def remove_x(arr, element):
-    arr.remove(element)
+print("\n\n###### get_from_dict ######\n")
 
-# \/\/\/\/\/\/\  DO NOT TOUCH AREA  \/\/\/\/\/\/\ #
+# Should not work. First argument should be a dict.
+print('\nget_from_dict("hello", "kimchi"):')
+get_from_dict("hello", "kimchi")
 
-days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+# Should not work. Word to search from is required.
+print('\nget_from_dict(my_english_dict):')
+get_from_dict(my_english_dict)
 
-print("Is Wed on 'days' list?", is_on_list(days, "Wed"))
+# Should not work. Word is not found.
+print('\nget_from_dict(my_english_dict, "galbi"):')
+get_from_dict(my_english_dict, "galbi")
 
-print("The fourth item in 'days' is:", get_x(days, 3))
+# Should work and print the definiton of 'kimchi'
+print('\nget_from_dict(my_english_dict, "kimchi"):')
+get_from_dict(my_english_dict, "kimchi")
 
-add_x(days, "Sat")
-print(days)
+print("\n\n###### update_word ######\n")
 
-remove_x(days, "Mon")
-print(days)
+# Should not work. First argument should be a dict.
+print('\nupdate_word("hello", "kimchi"):')
+update_word("hello", "kimchi")
+
+# Should not work. Word and definiton are required.
+print('\nupdate_word(my_english_dict, "kimchi"):')
+update_word(my_english_dict, "kimchi")
+
+# Should not work. Word not found.
+print('\nupdate_word(my_english_dict, "galbi", "Love it."):')
+update_word(my_english_dict, "galbi", "Love it.")
+
+# Should work.
+print('\nupdate_word(my_english_dict, "kimchi", "Food from the gods."):')
+update_word(my_english_dict, "kimchi", "Food from the gods.")
+
+# Check the new value.
+print('\nget_from_dict(my_english_dict, "kimchi"):')
+get_from_dict(my_english_dict, "kimchi")
 
 
-# /\/\/\/\/\/\/\ END DO NOT TOUCH AREA /\/\/\/\/\/\/\ #
+print("\n\n###### delete_from_dict ######\n")
+
+# Should not work. First argument should be a dict.
+print('\ndelete_from_dict("hello", "kimchi"):')
+delete_from_dict("hello", "kimchi")
+
+# Should not work. Word to delete is required.
+print('\ndelete_from_dict(my_english_dict):')
+delete_from_dict(my_english_dict)
+
+# Should not work. Word not found.
+print('\ndelete_from_dict(my_english_dict, "galbi"):')
+delete_from_dict(my_english_dict, "galbi")
+
+# Should work.
+print('\ndelete_from_dict(my_english_dict, "kimchi"):')
+delete_from_dict(my_english_dict, "kimchi")
+
+# Check that it does not exist
+print('\nget_from_dict(my_english_dict, "kimchi"):')
+get_from_dict(my_english_dict, "kimchi")
+
+# \/\/\/\/\/\/\ END DO NOT TOUCH  \/\/\/\/\/\/\
