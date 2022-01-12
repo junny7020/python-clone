@@ -1,14 +1,26 @@
 def plus(a, b):
-    return (float(a)+float(b))
+    if a.isdecimal() and b.isdecimal():
+        return (float(a)+float(b))
+    else:
+        return "Please enter numbers."
 
 def minus(a, b):
-    return (float(a)-float(b))
-    
+    if a.isdecimal() and b.isdecimal():
+        return (float(a)-float(b))
+    else:
+        return "Please enter numbers."
+
 def div(a, b):
-    return (float(a)/float(b))
+    if a.isdecimal() and b.isdecimal():
+        return (float(a)/float(b))
+    else:
+        return "Please enter numbers."
 
 def times(a, b):
-    return (float(a)*float(b))
+    if a.isdecimal() and b.isdecimal():
+        return (float(a)*float(b))
+    else:
+        return "Please enter numbers."
 
 def negate(a):
     if a.isdecimal():
@@ -18,10 +30,16 @@ def negate(a):
         return "Please enter a number."
 
 def pow(a, b):
-    return (float(a)**float(b))
+    if a.isdecimal() and b.isdecimal():
+        return (float(a)**float(b))
+    else:
+        return "Please enter numbers."
 
 def remainder(a, b):
-    return (float(a) % float(b))
+    if a.isdecimal() and b.isdecimal():
+        return (float(a) % float(b))
+    else:
+        return "Please enter numbers."
 
 a = input("First number:")
 b = input("Second number:")
@@ -32,4 +50,3 @@ print(times(a, b))
 print(negate(a))
 print(pow(a, b))
 print(remainder(a, b))
-    
