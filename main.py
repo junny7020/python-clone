@@ -1,15 +1,7 @@
-import requests
-from bs4 import BeautifulSoup
+from indeed import extract_indeed_pages, extract_indeed_jobs
 
-indeed_result = requests.get("http://www.indeed.com/jobs?q=python&limit=50")
 
-indeed_soup = BeautifulSoup(indeed_result.text, "html.parser")
+last_indeed_page = extract_indeed_pages()
+print(last_indeed_page)
 
-pagination = indeed_soup.find("div", {"class": "pagination"})
-
-pages = pagination.find_all("a")
-spans =[]
-# pages is a list of anchors in the soup of pagination
-for page in pages:
-  spans.append(page.find("span"))
-print(spans[:-1])
+extract_indeed_jobs(last_indeed_page)
